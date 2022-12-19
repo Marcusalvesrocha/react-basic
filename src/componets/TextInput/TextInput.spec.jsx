@@ -1,31 +1,30 @@
-import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import { TextInput } from "."
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { TextInput } from '.';
 
 describe('<TextInput />', () => {
   it('should have a value of searchValue', () => {
-    const fn = jest.fn()
-    render(<TextInput handleChange={fn} searchValue={'testando'}/>)
+    const fn = jest.fn();
+    render(<TextInput handleChange={fn} searchValue={'testando'} />);
 
-    const input = screen.getByPlaceholderText(/Type your search/i)
-    expect(input.value).toBe('testando')
-
-  })
+    const input = screen.getByPlaceholderText(/Type your search/i);
+    expect(input.value).toBe('testando');
+  });
 
   it('should call handleChange function on each key pressed', () => {
-    const fn = jest.fn()
-    render(<TextInput handleChange={fn} />)
+    const fn = jest.fn();
+    render(<TextInput handleChange={fn} searchValue={'testando'} />);
 
-    const input = screen.getByPlaceholderText(/Type your search/i)
-    const value = 'repel'
+    const input = screen.getByPlaceholderText(/Type your search/i);
+    const value = 'repel';
 
-    userEvent.type(input, value)
-    expect(fn).toHaveBeenCalledTimes(value.length)
-  })
+    userEvent.type(input, value);
+    expect(fn).toHaveBeenCalledTimes(value.length);
+  });
 
   it('should match sanapshot', () => {
-    const fn = jest.fn()
-    const { container } = render(<TextInput handleChange={fn} />)
-    expect(container).toMatchSnapshot()
-  })
-})
+    const fn = jest.fn();
+    const { container } = render(<TextInput handleChange={fn} searchValue={'testando'} />);
+    expect(container).toMatchSnapshot();
+  });
+});

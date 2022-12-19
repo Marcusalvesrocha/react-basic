@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     {/* <HomeClass numberIncrement={2}/> */}
     <Home />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
